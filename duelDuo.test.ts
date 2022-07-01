@@ -21,13 +21,19 @@ test('Title shows up when page loads', async () => {
 })
 
 test('The draw button show the list', async () => {
-    const drawBtn = await driver.findElement(By.id('choices'))
-    await drawBtn.click()
-    await driver.sleep(10000)
+    await driver.findElement(By.id('draw')).click()
+    const choicesSPart = await driver.findElement(By.id('choices'))
+    const displayed = await choicesSPart.isDisplayed()
+    expect(displayed).toBe(true)
+    await driver.sleep(5000)
 })
 
 test('Show that Add-duo works', async () => {
-    const addBtn = await driver.findElement(By.id('player-duo'))
-    await addBtn.click()
+    await driver.findElement(By.id('draw')).click()
+    await driver.findElement(By.css('.bot-btn')).click()
+    const addPart = await driver.findElement(By.id('player-duo'))
+    const displayed = await addPart.isDisplayed()
+    expect(displayed).toBe(true)
     await driver.sleep(5000)
 })
+

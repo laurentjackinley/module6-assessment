@@ -1,13 +1,16 @@
 const {shuffleArray} = require('./utils')
+const testArr1 = [1,2,3]
+const testArr2 = ["hi","Hello","Coding"]
 
 describe('shuffleArray should', () => {
+
     test('expect array to return an array', () => {
-        let retArr = shuffleArray()
-        expect( retArr).toBe(true)
+        expect(Array.isArray(shuffleArray(testArr1))).toBe(true)
+        expect(Array.isArray(shuffleArray(testArr2))).toBe(true)
     })
     
     test('check if the return array is the same length', () => { 
-            let arrlength = shuffleArray()
-        expect(arrlength).toHaveLength(10)
+        expect(shuffleArray(testArr2)).toHaveLength(testArr1.length)
+        expect(shuffleArray(testArr2)).toHaveLength(testArr2.length)
     })
 })
